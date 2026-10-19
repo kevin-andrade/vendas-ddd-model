@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Vendas.Application\Vendas.Application.csproj" />
+      <ProjectReference Include="..\Vendas.Domain\Vendas.Domain.csproj" />
+    </ItemGroup>
+
+</Project>
