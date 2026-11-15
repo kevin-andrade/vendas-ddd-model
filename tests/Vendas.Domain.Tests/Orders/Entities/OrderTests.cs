@@ -11,7 +11,7 @@ namespace Vendas.Domain.Tests.Orders.Entities;
 public class OrderTests
 {
     private static ShippingAddress CreateValidAddress()
-      => ShippingAddress.Create("12345-000", "Rua A", "Ap 1", "Centro", "SP", "São Paulo", "Brasil");
+      => ShippingAddress.Create("12345-000", "Rua A", "1000", "Ap 1", "Centro", "SP", "São Paulo", "Brasil");
 
     private static readonly Guid ValidCustomerId = Guid.NewGuid();
     private static readonly Guid ValidProductId = Guid.NewGuid();
@@ -194,7 +194,7 @@ public class OrderTests
     {
         // Arrange
         var order = Order.Create(ValidCustomerId, CreateValidAddress());
-        var newAddress = ShippingAddress.Create("00000-000", "Nova Rua", "Casa", "Bairro Novo", "RJ", "Rio", "Brasil");
+        var newAddress = ShippingAddress.Create("00000-000", "Nova Rua", "100", "Casa", "Bairro Novo", "RJ", "Rio", "Brasil");
 
         // Act
         order.UpdateShippingAddress(newAddress);
@@ -213,7 +213,7 @@ public class OrderTests
     {
         // Arrange
         var order = Order.Create(ValidCustomerId, CreateValidAddress());
-        var newAddress = ShippingAddress.Create("00000-000", "Nova Rua", "Casa", "Bairro Novo", "RJ", "Rio", "Brasil");
+        var newAddress = ShippingAddress.Create("00000-000", "Nova Rua","100","Casa","Bairro Novo", "RJ", "Rio", "Brasil");
         SetOrderStatus(order, status);
 
         // Act

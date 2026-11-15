@@ -7,6 +7,7 @@ public class ShippingAddress : ValueObject
 {
     public string ZipCode { get; private set; }
     public string Street { get; private set; }
+    public string Number { get; private set; }
     public string Complement { get; private set; }
     public string Neighborhood { get; private set; }
     public string State { get; private set; }
@@ -14,10 +15,11 @@ public class ShippingAddress : ValueObject
     public string Country { get; private set; }
 
 
-    public ShippingAddress(string zipCode, string street, string complement, string neighborhood, string state, string city, string country)
+    public ShippingAddress(string zipCode, string street, string number, string complement, string neighborhood, string state, string city, string country)
     {
         Guard.AgainstNullOrEmptyString(zipCode, nameof(zipCode));
         Guard.AgainstNullOrEmptyString(street, nameof(street));
+        Guard.AgainstNullOrEmptyString(number, nameof(number));
         Guard.AgainstNullOrEmptyString(neighborhood, nameof(neighborhood));
         Guard.AgainstNullOrEmptyString(state, nameof(state));
         Guard.AgainstNullOrEmptyString(city, nameof(city));
@@ -25,6 +27,7 @@ public class ShippingAddress : ValueObject
         
         ZipCode = zipCode;
         Street = street;
+        Number = number;
         Complement = complement ?? string.Empty;
         Neighborhood = neighborhood;
         State = state;
@@ -32,10 +35,10 @@ public class ShippingAddress : ValueObject
         Country = country;
     }
 
-    public static ShippingAddress Create(string zipCode, string street, string complement, string neighborhood, string state, string city,
+    public static ShippingAddress Create(string zipCode, string street, string number, string complement, string neighborhood, string state, string city,
         string country)
     {
-        return new ShippingAddress(zipCode, street, complement, neighborhood, state, city, country);
+        return new ShippingAddress(zipCode, street, number, complement, neighborhood, state, city, country);
     }
     
     public string FormatAddress()
@@ -47,6 +50,7 @@ public class ShippingAddress : ValueObject
     {
         yield return ZipCode;
         yield return Street;
+        yield return Number;
         yield return Complement ?? string.Empty;
         yield return Neighborhood;
         yield return State;
