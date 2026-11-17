@@ -59,15 +59,6 @@ public sealed class OrderItem : Entity
         CalculateTotalAmount();
     }
 
-    public void UpdateUnitPrice(decimal newPrice)
-    {
-        Guard.Against<DomainException>(newPrice <= 0, "O preço unitário deve ser maior do que zero");
-
-        UnitPrice = newPrice;
-        SetUpdatedAt();
-        CalculateTotalAmount();
-    }
-
     private void CalculateTotalAmount()
     {
         TotalPrice = (UnitPrice * Quantity) - DiscountApplied;
